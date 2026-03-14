@@ -169,13 +169,13 @@
 
         /* === HERO === */
         .card-hero {
-            grid-column: span 7;
+            grid-column: span 12;
             background: linear-gradient(160deg, rgba(10,10,10,0.95) 0%, rgba(20,30,15,0.9) 100%);
             border: 1px solid rgba(255,255,255,0.12);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            min-height: 460px;
+            min-height: 560px;
             position: relative;
             overflow: hidden;
         }
@@ -252,8 +252,10 @@
             grid-column: span 2;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 120px;
+            justify-content: center;
+            gap: 0.3rem;
+            min-height: 100px;
+            text-align: center;
         }
 
         .stat-label { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
@@ -566,19 +568,20 @@
 
 <div class="bento">
 
-    <!-- HERO -->
+    <!-- HERO - FULL WIDTH -->
     <div class="card card-hero">
         <div class="hero-bg-img"></div>
         <div class="hero-badge">📍 Windham, Vermont &nbsp;·&nbsp; ⭐ Superhost &nbsp;·&nbsp; 4.96 Rating</div>
-        <h1>Cozy 3BR<br>Artistic Retreat<br>w/ Trails</h1>
-        <p>Art-filled 3BR retreat on 3.5 acres in Windham, VT. Tempur-Pedic beds, pellet stove, sledding hill, fire pit, Starlink WiFi & whole-house generator. Ski Magic Mountain in under 10 minutes.</p>
+        <h1>Cozy 3BR Artistic Retreat w/ Trails</h1>
+        <p>Art-filled retreat on 3.5 private acres in Windham, VT. Tempur-Pedic beds, pellet stove, sledding hill, fire pit, Starlink WiFi &amp; whole-house generator. Ski Magic Mountain in under 10 minutes.</p>
         <div class="hero-buttons">
-            <a href="#book" class="btn-primary">Book Direct & Save</a>
+            <a href="#book" class="btn-primary">Book Direct &amp; Save</a>
             <a href="#photos" class="btn-ghost">See All Photos</a>
+            <a href="#seasons" class="btn-ghost">Year-Round Activities</a>
         </div>
     </div>
 
-    <!-- STATS -->
+    <!-- STATS ROW - FULL WIDTH BELOW HERO -->
     <div class="card card-stat">
         <div class="stat-label">Bedrooms</div>
         <div class="stat-value rainbow">3</div>
@@ -595,14 +598,19 @@
         <div class="stat-sub">Within 40 min</div>
     </div>
     <div class="card card-stat">
-        <div class="stat-label">Rating · Reviews</div>
+        <div class="stat-label">Rating</div>
         <div class="stat-value rainbow">4.96</div>
-        <div class="stat-sub">95 reviews ⭐ Guest Favorite</div>
+        <div class="stat-sub">95 reviews ⭐ Guest Fave</div>
     </div>
     <div class="card card-stat">
-        <div class="stat-label">Nearest Ski</div>
+        <div class="stat-label">Magic Mtn</div>
         <div class="stat-value rainbow">&lt;10</div>
-        <div class="stat-sub">min to Magic Mtn</div>
+        <div class="stat-sub">minutes away</div>
+    </div>
+    <div class="card card-stat">
+        <div class="stat-label">Acres</div>
+        <div class="stat-value rainbow">3.5</div>
+        <div class="stat-sub">Private property</div>
     </div>
 
     <!-- ======================== PHOTOS ======================== -->
@@ -769,6 +777,53 @@
             <div class="attraction-item"><strong>🚂 Green Mtn Railroad</strong>Scenic Vermont train rides</div>
             <div class="attraction-item"><strong>🛖 Vermont Country Store</strong>World-famous destination</div>
             <div class="attraction-item"><strong>🏛️ Bennington Museum</strong>Robert Todd Lincoln's house nearby</div>
+        </div>
+    </div>
+
+    <!-- SEASONS -->
+    <div class="section-label" id="seasons">
+        <h2><span></span>Year-Round Activities</h2>
+    </div>
+
+    <div class="card" style="grid-column:span 4;">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">❄️</div>
+        <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:0.8rem;color:#88aaff;">Winter</h3>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.85rem;color:var(--text);">⛷️ Ski 5 mountains — Magic &lt;10 min away</div>
+            <div style="font-size:0.85rem;color:var(--text);">🛷 Sledding hill right on the property</div>
+            <div style="font-size:0.85rem;color:var(--text);">🔥 Cozy up by the pellet stove</div>
+            <div style="font-size:0.85rem;color:var(--text);">🌨️ Snowshoe the private trails</div>
+            <div style="font-size:0.85rem;color:var(--text);">🪵 Fire pit with valley views</div>
+            <div style="font-size:0.85rem;color:var(--text);">⚡ Whole-house generator — storm-proof</div>
+            <div style="font-size:0.85rem;color:var(--text);">🎿 Snowmobile trails nearby</div>
+        </div>
+    </div>
+
+    <div class="card" style="grid-column:span 4;">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">🌸</div>
+        <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:0.8rem;color:#ffaa88;">Spring &amp; Summer</h3>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.85rem;color:var(--text);">🥾 Hike the Appalachian Trail (15 min)</div>
+            <div style="font-size:0.85rem;color:var(--text);">🏊 Harriman Reservoir — kayaking &amp; swimming (15 min)</div>
+            <div style="font-size:0.85rem;color:var(--text);">💧 Amazing waterfall — 10 min away</div>
+            <div style="font-size:0.85rem;color:var(--text);">🌊 Jamaica State Park &amp; swimming holes (15 min)</div>
+            <div style="font-size:0.85rem;color:var(--text);">🎵 Stratton Mountain summer concert series (25 min)</div>
+            <div style="font-size:0.85rem;color:var(--text);">🌿 Groomed property trails for morning hikes</div>
+            <div style="font-size:0.85rem;color:var(--text);">🚜 Adams Family Farm &amp; local farmers markets</div>
+        </div>
+    </div>
+
+    <div class="card" style="grid-column:span 4;">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">🍂</div>
+        <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:0.8rem;color:#ffcc44;">Fall</h3>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.85rem;color:var(--text);">🍁 Peak foliage hikes on 3.5-acre trails</div>
+            <div style="font-size:0.85rem;color:var(--text);">🫐 Berry foraging right on the property</div>
+            <div style="font-size:0.85rem;color:var(--text);">🗺️ Trail maps &amp; foraging guide provided</div>
+            <div style="font-size:0.85rem;color:var(--text);">🎃 Craft fairs &amp; farmers markets nearby</div>
+            <div style="font-size:0.85rem;color:var(--text);">🏔️ Stunning valley views from the deck</div>
+            <div style="font-size:0.85rem;color:var(--text);">🚂 Green Mountain Railroad scenic rides</div>
+            <div style="font-size:0.85rem;color:var(--text);">🛖 Vermont Country Store — world-famous</div>
         </div>
     </div>
 
