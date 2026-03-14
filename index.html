@@ -262,6 +262,21 @@
 
         .card-photo-wide:hover img { transform: scale(1.03); }
 
+        .photo-placeholder {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            font-size: 0.82rem;
+            background: var(--card2);
+            border: 1px dashed #3a4030 !important;
+            text-align: center;
+            padding: 2rem !important;
+        }
+        .photo-placeholder .photo-icon { font-size: 2.5rem; opacity: 0.25; }
+
         /* LIGHTBOX */
         .lightbox {
             display: none;
@@ -608,21 +623,57 @@
 
     <!-- PHOTOS -->
     <div class="section-label" id="photos">
-        <h2>// Photos</h2>
+        <h2>// Living Room</h2>
     </div>
 
-    <!-- Row 1 -->
     <div class="card-photo-wide" onclick="openLightbox(0)">
         <img src="photos/living-room-full.jpg" alt="Cozy living room with wood stove and pine floors">
     </div>
     <div class="card-photo" onclick="openLightbox(1)">
         <img src="photos/living-room-stove.jpg" alt="Wood stove glowing warmly in the evening">
     </div>
+    <div class="card-photo photo-placeholder">
+        <div class="photo-icon">📷</div>
+        <span>More living room photos coming soon</span>
+    </div>
+
+    <div class="section-label">
+        <h2>// Dining Room &amp; Kitchen</h2>
+    </div>
+
     <div class="card-photo" onclick="openLightbox(2)">
         <img src="photos/dining-room.jpg" alt="Dining room with long wooden table, seats 6+">
     </div>
+    <div class="card-photo photo-placeholder">
+        <div class="photo-icon">🍳</div>
+        <span>Kitchen photos coming soon</span>
+    </div>
+    <div class="card-photo photo-placeholder">
+        <div class="photo-icon">📷</div>
+        <span>More dining photos coming soon</span>
+    </div>
 
-    <!-- Row 2 -->
+    <div class="section-label">
+        <h2>// Bedrooms &amp; Bathrooms</h2>
+    </div>
+
+    <div class="card-photo photo-placeholder">
+        <div class="photo-icon">🛏️</div>
+        <span>Bedroom 1 photos coming soon</span>
+    </div>
+    <div class="card-photo photo-placeholder">
+        <div class="photo-icon">🛏️</div>
+        <span>Bedroom 2 photos coming soon</span>
+    </div>
+    <div class="card-photo photo-placeholder">
+        <div class="photo-icon">🛏️</div>
+        <span>Bedroom 3 photos coming soon</span>
+    </div>
+
+    <div class="section-label">
+        <h2>// Outside &amp; Surroundings</h2>
+    </div>
+
     <div class="card-photo" onclick="openLightbox(3)">
         <img src="photos/firepit-night.jpg" alt="Outdoor fire pit at night with roaring bonfire">
     </div>
@@ -632,8 +683,6 @@
     <div class="card-photo" onclick="openLightbox(5)">
         <img src="photos/creek-nature.jpg" alt="Creek and natural surroundings on the property">
     </div>
-
-    <!-- Row 3 -->
     <div class="card-photo" onclick="openLightbox(6)">
         <img src="photos/pond-autumn.jpg" alt="Pond with brilliant autumn foliage">
     </div>
@@ -644,7 +693,7 @@
         <img src="photos/village-winter.jpg" alt="Classic New England village in winter snow">
     </div>
     <div class="card-photo" onclick="openLightbox(9)">
-        <img src="photos/village-autumn.jpg" alt="Village church with autumn foliage and sunset">
+        <img src="photos/village-autumn.jpg" alt="Village at sunset in peak autumn">
     </div>
 
     <!-- MOUNTAINS -->
