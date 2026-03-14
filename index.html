@@ -208,14 +208,9 @@
             overflow: hidden;
             border: 1px solid var(--border);
             transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             min-height: 240px;
-            color: var(--gray);
-            font-size: 0.85rem;
-            gap: 0.5rem;
+            padding: 0;
+            cursor: pointer;
         }
 
         .card-photo:hover {
@@ -229,9 +224,63 @@
         .card-photo img {
             width: 100%;
             height: 100%;
+            min-height: 240px;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s;
         }
+
+        .card-photo:hover img { transform: scale(1.03); }
+
+        .card-photo-wide {
+            grid-column: span 6;
+            grid-row: span 3;
+            background: var(--card2);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            min-height: 240px;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .card-photo-wide:hover {
+            border-color: var(--light-green);
+            transform: translateY(-3px);
+            box-shadow: 0 0 0 1px var(--green), 0 8px 30px rgba(45,90,27,0.2);
+        }
+
+        .card-photo-wide img {
+            width: 100%;
+            height: 100%;
+            min-height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .card-photo-wide:hover img { transform: scale(1.03); }
+
+        /* LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+        .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; color: #fff; cursor: pointer; opacity: 0.7; }
+        .lightbox-close:hover { opacity: 1; }
+        .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2rem; color: #fff; cursor: pointer; opacity: 0.6; padding: 0.5rem 1rem; }
+        .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; }
+        .lightbox-prev { left: 1rem; }
+        .lightbox-next { right: 1rem; }
+        .lightbox-caption { position: absolute; bottom: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.85rem; }
 
         /* MOUNTAINS */
         .card-mountains {
@@ -558,23 +607,44 @@
     </div>
 
     <!-- PHOTOS -->
-    <div class="section-label">
+    <div class="section-label" id="photos">
         <h2>// Photos</h2>
     </div>
 
-    <div class="card-photo card">
-        <div class="photo-icon">📷</div>
-        <span>Add your photos here</span>
+    <!-- Row 1 -->
+    <div class="card-photo-wide" onclick="openLightbox(0)">
+        <img src="photos/living-room-full.jpg" alt="Cozy living room with wood stove and pine floors">
+    </div>
+    <div class="card-photo" onclick="openLightbox(1)">
+        <img src="photos/living-room-stove.jpg" alt="Wood stove glowing warmly in the evening">
+    </div>
+    <div class="card-photo" onclick="openLightbox(2)">
+        <img src="photos/dining-room.jpg" alt="Dining room with long wooden table, seats 6+">
     </div>
 
-    <div class="card-photo card">
-        <div class="photo-icon">🛏️</div>
-        <span>Bedroom photos</span>
+    <!-- Row 2 -->
+    <div class="card-photo" onclick="openLightbox(3)">
+        <img src="photos/firepit-night.jpg" alt="Outdoor fire pit at night with roaring bonfire">
+    </div>
+    <div class="card-photo-wide" onclick="openLightbox(4)">
+        <img src="photos/mountain-vista.jpg" alt="Dramatic mountain valley vista nearby">
+    </div>
+    <div class="card-photo" onclick="openLightbox(5)">
+        <img src="photos/creek-nature.jpg" alt="Creek and natural surroundings on the property">
     </div>
 
-    <div class="card-photo card">
-        <div class="photo-icon">🌲</div>
-        <span>Trails & exterior</span>
+    <!-- Row 3 -->
+    <div class="card-photo" onclick="openLightbox(6)">
+        <img src="photos/pond-autumn.jpg" alt="Pond with brilliant autumn foliage">
+    </div>
+    <div class="card-photo" onclick="openLightbox(7)">
+        <img src="photos/lake-autumn.jpg" alt="Serene lake through the trees in fall">
+    </div>
+    <div class="card-photo" onclick="openLightbox(8)">
+        <img src="photos/village-winter.jpg" alt="Classic New England village in winter snow">
+    </div>
+    <div class="card-photo" onclick="openLightbox(9)">
+        <img src="photos/village-autumn.jpg" alt="Village church with autumn foliage and sunset">
     </div>
 
     <!-- MOUNTAINS -->
@@ -856,6 +926,56 @@
     </p>
     <p style="margin-top:1rem; font-size:0.8rem; opacity:0.4;">&copy; 2026 · All Rights Reserved</p>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+    <span class="lightbox-prev" onclick="event.stopPropagation(); shiftLightbox(-1)">‹</span>
+    <img id="lightbox-img" src="" alt="">
+    <span class="lightbox-next" onclick="event.stopPropagation(); shiftLightbox(1)">›</span>
+    <span class="lightbox-caption" id="lightbox-caption"></span>
+</div>
+
+<script>
+const photos = [
+    { src: 'photos/living-room-full.jpg', cap: 'Living room — wood stove, pine floors, cozy seating' },
+    { src: 'photos/living-room-stove.jpg', cap: 'Wood stove glowing on a Vermont evening' },
+    { src: 'photos/dining-room.jpg', cap: 'Dining room — seats 6+, rustic Vermont charm' },
+    { src: 'photos/firepit-night.jpg', cap: 'Outdoor fire pit — perfect Vermont nights' },
+    { src: 'photos/mountain-vista.jpg', cap: 'Nearby mountain valley — world-class hiking' },
+    { src: 'photos/creek-nature.jpg', cap: 'Creek and nature surroundings' },
+    { src: 'photos/pond-autumn.jpg', cap: 'Autumn foliage at the pond' },
+    { src: 'photos/lake-autumn.jpg', cap: 'Serene lake through the trees in fall' },
+    { src: 'photos/village-winter.jpg', cap: 'Classic New England village in winter' },
+    { src: 'photos/village-autumn.jpg', cap: 'Village at sunset in peak autumn' },
+];
+let current = 0;
+function openLightbox(i) {
+    current = i;
+    document.getElementById('lightbox-img').src = photos[i].src;
+    document.getElementById('lightbox-caption').textContent = photos[i].cap;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+    if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+}
+function shiftLightbox(dir) {
+    current = (current + dir + photos.length) % photos.length;
+    document.getElementById('lightbox-img').src = photos[current].src;
+    document.getElementById('lightbox-caption').textContent = photos[current].cap;
+}
+document.addEventListener('keydown', e => {
+    if (document.getElementById('lightbox').classList.contains('open')) {
+        if (e.key === 'ArrowRight') shiftLightbox(1);
+        if (e.key === 'ArrowLeft') shiftLightbox(-1);
+        if (e.key === 'Escape') closeLightbox({target: document.getElementById('lightbox')});
+    }
+});
+</script>
 
 </body>
 </html>
