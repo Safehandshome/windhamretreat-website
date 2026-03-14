@@ -276,6 +276,7 @@
             gap: 0.8rem;
         }
 
+        .pg-2 { grid-template-columns: repeat(2, 1fr); }
         .pg-3 { grid-template-columns: repeat(3, 1fr); }
         .pg-4 { grid-template-columns: repeat(4, 1fr); }
         .pg-2-1 { grid-template-columns: 2fr 1fr; }
@@ -693,10 +694,11 @@
         <div class="photo-tile tall" onclick="openLb('exterior',2)"><img src="photos/entry1-mudroom.jpg" alt="Wood-paneled mudroom entryway"></div>
     </div>
 
-    <div class="photo-grid-section pg-3">
+    <div class="photo-grid-section pg-4">
         <div class="photo-tile" onclick="openLb('exterior',3)"><img src="photos/entry2-steeple-window.jpg" alt="Entryway picture window with church steeple view"></div>
         <div class="photo-tile" onclick="openLb('exterior',4)"><img src="photos/entry3-mudroom-wide.jpg" alt="Mudroom wide angle"></div>
         <div class="photo-tile" onclick="openLb('exterior',5)"><img src="photos/entry4-wingback-window.jpg" alt="Wingback chair by large picture window"></div>
+        <div class="photo-tile" onclick="openLb('exterior',6)"><img src="photos/entry5-staircase.jpg" alt="Staircase with Persian carpet runner"></div>
     </div>
 
     <div class="section-label">
@@ -715,10 +717,9 @@
         <div class="photo-tile" onclick="openLb('living',5)"><img src="photos/living5-stove-closeup.jpg" alt="Wood stove close-up"></div>
     </div>
 
-    <div class="photo-grid-section pg-3">
+    <div class="photo-grid-section pg-2">
         <div class="photo-tile" onclick="openLb('living',6)"><img src="photos/living6-sectional-tv.jpg" alt="Sectional sofa with TV and wood stove"></div>
         <div class="photo-tile" onclick="openLb('living',7)"><img src="photos/living7-stove-border.jpg" alt="Stove with colorful border trim"></div>
-        <div class="photo-tile" onclick="openLb('entry',0)"><img src="photos/entry5-staircase.jpg" alt="Staircase with Persian carpet runner"></div>
     </div>
 
     <div class="section-label">
@@ -1193,6 +1194,7 @@ const galleries = {
         {src:'photos/entry2-steeple-window.jpg', cap:'Entryway — church steeple view'},
         {src:'photos/entry3-mudroom-wide.jpg', cap:'Mudroom, wide angle'},
         {src:'photos/entry4-wingback-window.jpg', cap:'Sitting area by picture window'},
+        {src:'photos/entry5-staircase.jpg', cap:'Staircase with Persian carpet runner'},
     ],
     living: [
         {src:'photos/living-room-full.jpg', cap:'Living room — blue sofas & wood stove'},
@@ -1203,7 +1205,6 @@ const galleries = {
         {src:'photos/living5-stove-closeup.jpg', cap:'Wood stove close-up'},
         {src:'photos/living6-sectional-tv.jpg', cap:'Sectional sofa with TV'},
         {src:'photos/living7-stove-border.jpg', cap:'Stove with colorful border trim'},
-        {src:'photos/entry5-staircase.jpg', cap:'Staircase with Persian carpet runner'},
     ],
     dining: [
         {src:'photos/dining-room.jpg', cap:'Dining room — farmhouse table'},
