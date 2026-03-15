@@ -1306,12 +1306,8 @@
     <div class="card card-contact">
         <h2>Request to Book</h2>
         <p class="sub">Skip Airbnb's service fees — book direct with the host. We'll reply within a few hours.</p>
-        <form name="booking" action="https://formsubmit.co/soulturnaround@icloud.com" method="POST">
-            <input type="hidden" name="_subject" value="New Booking Inquiry — Windham Retreat">
-            <input type="hidden" name="_autoresponse" value="Hi there! Thanks for your interest in Windham Retreat. We received your booking inquiry and will get back to you within 24 hours to confirm dates and details. — George, Windham Retreat">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://windhamretreat.com">
-            <input type="hidden" name="_captcha" value="false">
+        <form name="booking" id="bookingForm" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="booking">
             <div class="form-row">
                 <div class="form-group"><label>Your Name</label><input type="text" name="name" required placeholder="Jane Smith"></div>
                 <div class="form-group"><label>Email Address</label><input type="email" name="email" required placeholder="jane@email.com"></div>
@@ -1548,6 +1544,20 @@ function calPrev() { calMonth--; if (calMonth<0){calMonth=11;calYear--;} renderC
 function calNext() { calMonth++; if (calMonth>11){calMonth=0;calYear++;} renderCal(); }
 
 loadCalendar();
+
+// Booking form inline success
+const bf = document.getElementById('bookingForm');
+if (bf) {
+    bf.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = bf.querySelector('button[type="submit"]');
+        if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+        try {
+            await fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(bf)).toString() });
+        } catch(err) {}
+        bf.innerHTML = '<div style="text-align:center;padding:2rem 0;"><div style="font-size:2.5rem;margin-bottom:1rem;">✅</div><h3 style="color:#fff;margin-bottom:0.5rem;">Request Received!</h3><p style="color:#aaa;">Thanks for your interest in Windham Retreat. We\'ll get back to you within 24 hours to confirm dates and details.</p></div>';
+    });
+}
 </script>
 
 </body>
