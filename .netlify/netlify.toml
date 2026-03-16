@@ -1,14 +1,13 @@
+functionsDirectory = "/home/clawbotpi/sites/windhamretreat/netlify/functions"
+functionsDirectoryOrigin = "default"
 plugins = []
 headers = []
 redirects = []
 
-[functions]
-
-[functions."*"]
-
 [build]
 publish = "/home/clawbotpi/sites/windhamretreat"
 publishOrigin = "default"
+functions = "/home/clawbotpi/sites/windhamretreat/netlify/functions"
 
 [build.environment]
 
@@ -23,3 +22,7 @@ publishOrigin = "default"
 [build.processing.js]
 
 [build.services]
+
+[functions]
+
+[functions."*"]

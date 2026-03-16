@@ -1552,8 +1552,11 @@ if (bf) {
         e.preventDefault();
         const btn = bf.querySelector('button[type="submit"]');
         if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+        const formData = new FormData(bf);
+        const data = Object.fromEntries(formData.entries());
         try {
-            await fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(bf)).toString() });
+            await fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(formData).toString() });
+            await fetch('/.netlify/functions/confirm', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) });
         } catch(err) {}
         bf.innerHTML = '<div style="text-align:center;padding:2rem 0;"><div style="font-size:2.5rem;margin-bottom:1rem;">✅</div><h3 style="color:#fff;margin-bottom:0.5rem;">Request Received!</h3><p style="color:#aaa;">Thanks for your interest in Windham Retreat. We\'ll get back to you within 24 hours to confirm dates and details.</p></div>';
     });
